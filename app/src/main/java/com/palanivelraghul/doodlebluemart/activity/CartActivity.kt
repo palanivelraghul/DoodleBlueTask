@@ -34,13 +34,13 @@ class CartActivity : BaseActivity(), MenuItemListAdapter.MenuItemListAdapterCall
     private fun radioButtonSelection() {
         mBinding.rbDineIn.setOnCheckedChangeListener { compoundButton, isChecked ->
             compoundButton.isChecked = isChecked
-            if(isChecked){
+            if (isChecked) {
                 mBinding.rbTakeAway.isChecked = false
             }
         }
         mBinding.rbTakeAway.setOnCheckedChangeListener { compoundButton, isChecked ->
             compoundButton.isChecked = isChecked
-            if(isChecked){
+            if (isChecked) {
                 mBinding.rbDineIn.isChecked = false
             }
         }
@@ -112,23 +112,29 @@ class CartActivity : BaseActivity(), MenuItemListAdapter.MenuItemListAdapterCall
     }
 
     override fun onPlaceOrderClick() {
-        Toast.makeText(this, getString(R.string.text_welcome_message), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.text_order_placed_successfully), Toast.LENGTH_SHORT).show()
     }
 
     override fun loadTotalAmountOfCart(totalAmount: Double) {
         mBinding.tvTotalCost.text = AppUtils.getCurrencyFormatedValue(totalAmount)
     }
 
-    override fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, position: Int) {
-        viewModel.updateItemRemovePosition(-1)
-        viewModel.updatePosition(position)
-        viewModel.updateItemSelectedQuantity(previousSelectedQty + 1, itemId)
+    override fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int) {
+        if (previousSelectedQty < stockQuantity) {
+            viewModel.updateItemRemovePosition(-1)
+            viewModel.updatePosition(position)
+            viewModel.updateItemSelectedQuantity(previousSelectedQty + 1, itemId)
+        }
     }
 
-    override fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, position: Int) {
+    override fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int) {
         viewModel.updatePosition(position)
         viewModel.updateItemRemovePosition(if (previousSelectedQty - 1 == 0) position else -1)
         viewModel.updateItemSelectedQuantity(previousSelectedQty - 1, itemId)
+    }
+
+    override fun onMessageClick(itemId: Long) {
+        Toast.makeText(this, getString(R.string.text_add_note), Toast.LENGTH_SHORT).show()
     }
 
 

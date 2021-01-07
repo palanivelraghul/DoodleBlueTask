@@ -72,7 +72,7 @@ class ShopItemListActivity : BaseActivity(), MenuItemListAdapter.MenuItemListAda
         if (adapter == null) {
             adapter = MenuItemListAdapter(this, menuList.toMutableList(), false)
             mBinding.rvItemList.adapter = adapter
-            mBinding.rvItemList.isNestedScrollingEnabled = true
+            mBinding.rvItemList.isNestedScrollingEnabled = false
             mBinding.rvItemList.layoutManager = LinearLayoutManager(this)
         } else {
             adapter!!.updateMenuData(menuList.toMutableList(), viewModel.updatingPosition, -1)
@@ -90,21 +90,27 @@ class ShopItemListActivity : BaseActivity(), MenuItemListAdapter.MenuItemListAda
     }
 
     override fun onMenuClick() {
-        showToastMessage(getString(R.string.text_welcome_message))
+        showToastMessage(getString(R.string.text_menu))
     }
 
     override fun onBookATableClick() {
-        showToastMessage(getString(R.string.text_welcome_message))
+        showToastMessage(getString(R.string.text_book_a_table))
     }
 
-    override fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, position: Int) {
-        viewModel.updatePosition(position)
-        viewModel.updateItemSelectedQuantity(previousSelectedQty + 1, itemId)
+    override fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int) {
+        if (previousSelectedQty < stockQuantity) {
+            viewModel.updatePosition(position)
+            viewModel.updateItemSelectedQuantity(previousSelectedQty + 1, itemId)
+        }
     }
 
-    override fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, position: Int) {
+    override fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int) {
         viewModel.updatePosition(position)
         viewModel.updateItemSelectedQuantity(previousSelectedQty - 1, itemId)
+    }
+
+    override fun onMessageClick(itemId: Long) {
+        showToastMessage(getString(R.string.text_add_note))
     }
 
     override fun showProgressBar() {

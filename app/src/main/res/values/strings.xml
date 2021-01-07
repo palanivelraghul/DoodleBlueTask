@@ -23,8 +23,11 @@
     <string name="text_show_more">Show more</string>
     <string name="text_show_less">Show Less</string>
     <string name="text_delivery_options">Delivery Options</string>
-    <string name="text_dine_in">Dein In</string>
+    <string name="text_dine_in">Dine In</string>
     <string name="text_take_away">Take away</string>
     <string name="text_place_order">Place order</string>
     <string name="text_my_cart">My Cart</string>
+    <string name="text_add_note">Add Note</string>
+    <string name="text_book_a_table">Book table</string>
+    <string name="text_order_placed_successfully">Order Placed Successfully</string>
 </resources>

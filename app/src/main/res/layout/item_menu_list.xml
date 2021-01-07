@@ -44,27 +44,27 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_day_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_outline_dark"
-                    android:padding="@dimen/density_size_6"
-                    android:text="@string/text_day_d"
-                    android:textColor="@color/color_text_bold"
-                    android:textSize="@dimen/text_size_14"
-                    android:visibility="@{item.dayItem ? View.VISIBLE : View.GONE}" />
-
-                <TextView
                     android:id="@+id/tv_night_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/density_size_5"
                     android:background="@drawable/bg_outline_dark"
-                    android:padding="@dimen/density_size_6"
+                    android:padding="@dimen/density_size_4"
                     android:text="@string/text_night_n"
                     android:textColor="@color/color_text_bold"
                     android:textSize="@dimen/text_size_14"
                     android:visibility="@{item.nightItems ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    android:id="@+id/tv_day_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/density_size_5"
+                    android:background="@drawable/bg_outline_dark"
+                    android:padding="@dimen/density_size_4"
+                    android:text="@string/text_day_d"
+                    android:textColor="@color/color_text_bold"
+                    android:textSize="@dimen/text_size_14"
+                    android:visibility="@{item.dayItem ? View.VISIBLE : View.GONE}" />
 
             </LinearLayout>
 
@@ -82,7 +82,7 @@
                     android:layout_marginTop="@dimen/density_size_5"
                     android:text="@{item.itemName}"
                     android:textColor="@color/color_text_medium"
-                    android:textSize="@dimen/text_size_20"
+                    android:textSize="@dimen/text_size_16"
                     tools:text="@string/text_item_one" />
 
                 <TextView
@@ -92,7 +92,7 @@
                     android:layout_marginTop="@dimen/density_size_5"
                     android:text="@{item.itemDescription}"
                     android:textColor="@color/color_text_medium"
-                    android:textSize="@dimen/text_size_18"
+                    android:textSize="@dimen/text_size_14"
                     tools:text="@string/text_item_desc" />
 
                 <TextView
@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/density_size_5"
                     android:textColor="@color/color_light_orange_1"
-                    android:textSize="@dimen/text_size_18"
+                    android:textSize="@dimen/text_size_14"
                     tools:text="@string/text_item_price" />
 
             </LinearLayout>
@@ -119,22 +119,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_button_colored_dark_2"
-                    android:onClick="@{()->callBack.itemQuantityIncrease(item.itemId, item.itemSelectedQuantity, position)}"
+                    android:onClick="@{()->callBack.itemQuantityIncrease(item.itemId, item.itemSelectedQuantity, item.itemStockQuantity, position)}"
                     android:paddingLeft="@dimen/density_size_10"
                     android:paddingTop="@dimen/density_size_5"
+                    android:layout_gravity="end"
                     android:paddingRight="@dimen/density_size_10"
                     android:paddingBottom="@dimen/density_size_5"
                     android:text="@string/text_add_to_cart"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_16"
+                    android:textSize="@dimen/text_size_14"
                     android:visibility="@{item.itemSelectedQuantity > 0 ? View.GONE : View.VISIBLE}" />
 
                 <TableRow
                     android:id="@+id/tr_select_item_qty"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:background="@drawable/bg_outline_orange"
                     android:visibility="@{item.itemSelectedQuantity > 0 ? View.VISIBLE : View.GONE}">
 
@@ -142,30 +142,29 @@
                         android:id="@+id/tv_minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/density_size_5"
-                        android:layout_marginRight="@dimen/density_size_5"
-                        android:paddingLeft="@dimen/density_size_5"
+                        android:layout_marginLeft="@dimen/density_size_2"
+                        android:layout_marginRight="@dimen/density_size_2"
+                        android:paddingLeft="@dimen/density_size_3"
                         android:layout_marginTop="@dimen/density_size_2"
-                        android:paddingRight="@dimen/density_size_5"
+                        android:paddingRight="@dimen/density_size_3"
                         android:layout_marginBottom="@dimen/density_size_2"
-                        android:onClick="@{()->callBack.itemQuantityDecrease(item.itemId, item.itemSelectedQuantity, position)}"
+                        android:onClick="@{()->callBack.itemQuantityDecrease(item.itemId, item.itemSelectedQuantity, item.itemStockQuantity, position)}"
                         android:text="@string/text_minus"
                         android:textColor="@color/color_text_bold"
-                        android:textSize="@dimen/text_size_24"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/text_size_20"/>
 
                     <TextView
                         android:id="@+id/tv_qty"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/density_size_5"
+                        android:layout_marginLeft="@dimen/density_size_3"
                         android:layout_marginTop="@dimen/density_size_2"
-                        android:layout_marginRight="@dimen/density_size_5"
+                        android:layout_marginRight="@dimen/density_size_3"
                         android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/density_size_2"
                         android:text="@{String.valueOf(item.itemSelectedQuantity)}"
                         android:textColor="@color/color_text_bold"
-                        android:textSize="@dimen/text_size_16"
+                        android:textSize="@dimen/text_size_14"
                         android:textStyle="bold"
                         tools:text="@string/text_max_qty" />
 
@@ -176,24 +175,25 @@
                         android:paddingLeft="@dimen/density_size_5"
                         android:layout_marginTop="@dimen/density_size_2"
                         android:paddingRight="@dimen/density_size_5"
-                        android:layout_marginLeft="@dimen/density_size_5"
-                        android:layout_marginRight="@dimen/density_size_5"
+                        android:layout_marginLeft="@dimen/density_size_2"
+                        android:layout_marginRight="@dimen/density_size_2"
                         android:layout_marginBottom="@dimen/density_size_2"
-                        android:onClick="@{()->callBack.itemQuantityIncrease(item.itemId, item.itemSelectedQuantity, position)}"
+                        android:onClick="@{()->callBack.itemQuantityIncrease(item.itemId, item.itemSelectedQuantity, item.itemStockQuantity, position)}"
                         android:text="@string/text_plus"
                         android:textColor="@color/color_text_bold"
-                        android:textSize="@dimen/text_size_24"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/text_size_20" />
                 </TableRow>
 
                 <ImageView
                     android:id="@+id/img_note"
-                    android:layout_width="@dimen/density_size_12"
-                    android:layout_height="@dimen/density_size_12"
+                    android:layout_width="@dimen/density_size_24"
+                    android:layout_height="@dimen/density_size_24"
                     android:layout_gravity="bottom|end"
+                    android:adjustViewBounds="true"
                     android:layout_margin="@dimen/density_size_5"
                     android:src="@drawable/ic_round_message"
-                    android:visibility="@{View.GONE}" />
+                    android:onClick="@{()->callBack.onMessageClick(item.itemId)}"
+                    android:visibility="@{isFromCart ? View.VISIBLE : View.GONE}" />
             </LinearLayout>
 
         </TableRow>

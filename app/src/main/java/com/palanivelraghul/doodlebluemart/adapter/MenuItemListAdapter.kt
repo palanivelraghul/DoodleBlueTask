@@ -50,7 +50,8 @@ class MenuItemListAdapter(var callBack: MenuItemListAdapterCallBack, var itemLis
     }
 
     interface MenuItemListAdapterCallBack {
-        fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, position: Int)
-        fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, position: Int)
+        fun itemQuantityIncrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int)
+        fun itemQuantityDecrease(itemId: Long, previousSelectedQty: Int, stockQuantity: Int, position: Int)
+        fun onMessageClick(itemId: Long)
     }
 }

@@ -56,7 +56,7 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
-                            android:layout_width="@dimen/density_size_100"
+                            android:layout_width="@dimen/density_size_150"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@color/white">
@@ -79,10 +79,11 @@
                                     android:id="@+id/tv_total_cost"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/density_size_10"
+                                    android:layout_marginTop="@dimen/density_size_5"
                                     android:text="@string/text_total_cost"
                                     android:textColor="@color/color_text_bold"
                                     android:textSize="@dimen/text_size_16"
+                                    android:textStyle="bold"
                                     tools:text="100.00" />
                             </LinearLayout>
 
@@ -112,7 +113,7 @@
                     android:layout_marginTop="@dimen/density_size_5"
                     android:text="@string/text_review_order"
                     android:textColor="@color/color_text_bold"
-                    android:textSize="@dimen/text_size_18"
+                    android:textSize="@dimen/text_size_16"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,6 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/density_size_5"
                     android:layout_marginRight="@dimen/density_size_5"
+                    android:textColor="@color/color_text_bold"
                     android:onClick="@{()-> callBack.onClickOfMore()}"
                     android:text="@string/text_show_more"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +145,7 @@
                     android:layout_marginTop="@dimen/density_size_5"
                     android:text="@string/text_delivery_options"
                     android:textColor="@color/color_text_bold"
-                    android:textSize="@dimen/text_size_18"
+                    android:textSize="@dimen/text_size_16"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_show_more" />
 
@@ -197,14 +199,14 @@
         <TextView
             android:id="@+id/tv_place_order"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/density_size_50"
+            android:layout_height="@dimen/density_size_40"
             android:background="@color/color_dark_grey"
             android:gravity="center"
             android:text="@string/text_place_order"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:onClick="@{()->callBack.onPlaceOrderClick()}"
-            android:textSize="@dimen/text_size_18"
+            android:textSize="@dimen/text_size_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
