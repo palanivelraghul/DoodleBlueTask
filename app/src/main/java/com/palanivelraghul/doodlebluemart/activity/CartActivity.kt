@@ -112,7 +112,12 @@ class CartActivity : BaseActivity(), MenuItemListAdapter.MenuItemListAdapterCall
     }
 
     override fun onPlaceOrderClick() {
+        viewModel.deleteAllData()
+    }
+
+    override fun onOrderPlacedSuccessful() {
         Toast.makeText(this, getString(R.string.text_order_placed_successfully), Toast.LENGTH_SHORT).show()
+        onBackPressed()
     }
 
     override fun loadTotalAmountOfCart(totalAmount: Double) {

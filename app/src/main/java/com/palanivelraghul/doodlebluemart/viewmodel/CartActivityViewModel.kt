@@ -68,12 +68,27 @@ class CartActivityViewModel : ViewModel() {
         removingItemPosition = removeItemPosition
     }
 
+    fun deleteAllData() {
+        callBack.showProgressBar()
+        CoroutineScope(Dispatchers.IO).launch {
+            val job = async {
+                martDB.martDAO().deleteAll()
+            }
+            withContext(Dispatchers.Main) {
+                job.await()
+                callBack.dismissProgressBar()
+                callBack.onOrderPlacedSuccessful()
+            }
+        }
+    }
+
 
     interface CartActivityViewModelCallBack {
         fun showProgressBar()
         fun dismissProgressBar()
         fun onClickOfMore()
         fun onPlaceOrderClick()
+        fun onOrderPlacedSuccessful()
         fun loadMenuList(menuList: List<ItemEntity>)
         fun loadTotalAmountOfCart(totalAmount: Double)
     }

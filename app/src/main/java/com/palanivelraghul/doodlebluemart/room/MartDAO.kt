@@ -1,9 +1,6 @@
 package com.palanivelraghul.doodlebluemart.room
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.palanivelraghul.doodlebluemart.entity.ItemEntity
 
 @Dao
@@ -23,5 +20,8 @@ interface MartDAO {
 
     @Query(" Select sum(ItemSelectedQuantity * ItemPrice) from ItemList")
     suspend fun getTotalCostOfCart(): Double
+
+    @Query("Delete from ItemList")
+    suspend fun deleteAll()
 
 }
